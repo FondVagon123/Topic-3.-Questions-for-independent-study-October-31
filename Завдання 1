@@ -1,0 +1,32 @@
+import numpy as np
+import matplotlib.pyplot as plt
+
+
+y = [1.6, 0.8, 1.2, 0.5, 0.9, 1.1, 1.1, 0.6, 1.5, 0.8, 0.9, 1.2, 0.5, 1.3, 0.8, 1.2]
+t = np.arange(1, len(y) + 1)
+
+
+plt.figure(figsize=(8, 4))
+plt.plot(t, y, marker='o', linestyle='-', color='blue')
+plt.title('Графік стаціонарного часового ряду')
+plt.xlabel('t')
+plt.ylabel('y(t)')
+plt.grid(True)
+plt.show()
+
+
+y_t = np.array(y[:-1])  
+y_t1 = np.array(y[1:])  
+
+
+plt.figure(figsize=(5, 5))
+plt.scatter(y_t, y_t1, color='red')
+plt.xlabel('y(t)')
+plt.ylabel('y(t+1)')
+plt.title('Залежність y(t+1) від y(t)')
+plt.grid(True)
+plt.show()
+
+
+r1 = np.corrcoef(y_t, y_t1)[0, 1]
+print(f"Точний коефіцієнт автокореляції першого порядку r₁ = {r1:.3f}")
